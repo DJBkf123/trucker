@@ -20,10 +20,10 @@ module Trucker
       # Set import counter
       counter = 0
       counter += offset_for_records if offset_for_records
-      total_records = "Legacy#{model}".constantize.find(:all).size
+      total_records = "Legacy#{model}".constantize.all.size
   
       # Start import
-      "Legacy#{model}".constantize.find(:all, with(options)).each do |record|
+      "Legacy#{model}".constantize.all.each do |record|
         counter += 1
         puts status + " (#{counter}/#{total_records})"
         record.migrate
